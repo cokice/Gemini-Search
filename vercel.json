@@ -14,27 +14,35 @@
       "dest": "/server/routes.ts"
     },
     {
-      "src": "/assets/(.*)",
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/assets/(.*)",
       "dest": "/assets/$1"
     },
     {
-      "src": "/favicon.ico",
-      "dest": "/favicon.ico"
+      "src": "^/favicon.(svg|png|ico)",
+      "dest": "/favicon.$1"
     },
     {
-      "src": "/(.*).js",
-      "dest": "/$1.js"
+      "src": "^/manifest.json",
+      "dest": "/manifest.json"
     },
     {
-      "src": "/(.*).css",
-      "dest": "/$1.css"
+      "src": "^/apple-touch-icon.png",
+      "dest": "/apple-touch-icon.png"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "Cache-Control": "no-cache, no-store, must-revalidate"
-      }
+      "src": "^/og-image.png",
+      "dest": "/og-image.png"
+    },
+    {
+      "src": "^/(.*)\\.(.+)$",
+      "dest": "/$1.$2"
+    },
+    {
+      "src": "^/.*",
+      "dest": "/index.html"
     }
   ]
 } 
