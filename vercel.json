@@ -9,7 +9,8 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/public"
+        "distDir": "dist/public",
+        "buildCommand": "npm run build"
       }
     }
   ],
@@ -22,31 +23,7 @@
       "handle": "filesystem"
     },
     {
-      "src": "^/assets/(.*)",
-      "dest": "/dist/public/assets/$1"
-    },
-    {
-      "src": "^/favicon.(svg|png|ico)",
-      "dest": "/dist/public/favicon.$1"
-    },
-    {
-      "src": "^/manifest.json",
-      "dest": "/dist/public/manifest.json"
-    },
-    {
-      "src": "^/apple-touch-icon.png",
-      "dest": "/dist/public/apple-touch-icon.png"
-    },
-    {
-      "src": "^/og-image.png",
-      "dest": "/dist/public/og-image.png"
-    },
-    {
-      "src": "^/(.*)\\.(.+)$",
-      "dest": "/dist/public/$1.$2"
-    },
-    {
-      "src": "^/.*",
+      "src": "/(.*)",
       "dest": "/dist/public/index.html"
     }
   ]
