@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch server/index.ts",
-    "build": "tsc --project tsconfig.server.json && vite build",
+    "build": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.server.json && vite build",
     "start": "NODE_ENV=production node dist/server/index.js",
     "check": "tsc --noEmit",
     "db:push": "drizzle-kit push"
