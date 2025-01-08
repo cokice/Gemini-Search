@@ -6,9 +6,26 @@ import {
   type GenerateContentResult,
 } from "@google/generative-ai";
 import { marked } from "marked";
-import { setupEnvironment } from "./env";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const env = setupEnvironment();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Setup environment
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
+
+if (!process.env.GOOGLE_API_KEY) {
+  throw new Error("GOOGLE_API_KEY environment variable must be set in .env file");
+}
+
+const env = {
+  GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+  NODE_ENV: process.env.NODE_ENV || "development",
+};
+
+// Initialize Google AI
 const genAI = new GoogleGenerativeAI(env.GOOGLE_API_KEY);
 const model = genAI.getGenerativeModel({
   model: "gemini-2.0-flash-exp",
