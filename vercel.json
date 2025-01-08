@@ -1,11 +1,16 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/public",
   "builds": [
     {
       "src": "server/**/*.ts",
       "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/public"
+      }
     }
   ],
   "routes": [
@@ -18,31 +23,31 @@
     },
     {
       "src": "^/assets/(.*)",
-      "dest": "/assets/$1"
+      "dest": "/dist/public/assets/$1"
     },
     {
       "src": "^/favicon.(svg|png|ico)",
-      "dest": "/favicon.$1"
+      "dest": "/dist/public/favicon.$1"
     },
     {
       "src": "^/manifest.json",
-      "dest": "/manifest.json"
+      "dest": "/dist/public/manifest.json"
     },
     {
       "src": "^/apple-touch-icon.png",
-      "dest": "/apple-touch-icon.png"
+      "dest": "/dist/public/apple-touch-icon.png"
     },
     {
       "src": "^/og-image.png",
-      "dest": "/og-image.png"
+      "dest": "/dist/public/og-image.png"
     },
     {
       "src": "^/(.*)\\.(.+)$",
-      "dest": "/$1.$2"
+      "dest": "/dist/public/$1.$2"
     },
     {
       "src": "^/.*",
-      "dest": "/index.html"
+      "dest": "/dist/public/index.html"
     }
   ]
 } 
