@@ -14,8 +14,27 @@
       "dest": "/server/routes.ts"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/favicon.ico"
+    },
+    {
+      "src": "/(.*).js",
+      "dest": "/$1.js"
+    },
+    {
+      "src": "/(.*).css",
+      "dest": "/$1.css"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "no-cache, no-store, must-revalidate"
+      }
     }
   ]
 } 
