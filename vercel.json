@@ -17,7 +17,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server/routes.ts"
+      "dest": "server/routes.ts"
     },
     {
       "handle": "filesystem"
@@ -26,5 +26,8 @@
       "src": "/(.*)",
       "dest": "/dist/public/index.html"
     }
-  ]
+  ],
+  "env": {
+    "GOOGLE_API_KEY": "@google_api_key"
+  }
 } 
